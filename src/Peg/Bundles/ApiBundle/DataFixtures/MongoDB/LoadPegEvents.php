@@ -6,7 +6,6 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\DataFixtures\SharedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Peg\Bundles\ApiBundle\Document\CommentEvent;
 use Peg\Bundles\ApiBundle\Document\Event;
 use Peg\Bundles\ApiBundle\Document\Peg;
 use Peg\Bundles\ApiBundle\Document\PictureEvent;
@@ -17,24 +16,23 @@ class LoadPegEvents extends AbstractFixture implements SharedFixtureInterface, D
 {
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */
-    function getDependencies()
+    public function getDependencies()
     {
         return [LoadInitialPegs::class];
     }
 
-
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
-        $eventReflection    = new \ReflectionClass(Event::class);
+        $eventReflection = new \ReflectionClass(Event::class);
         $happenedAtReflProp = $eventReflection->getProperty('happenedAt');
         $happenedAtReflProp->setAccessible(true);
 
@@ -44,7 +42,7 @@ class LoadPegEvents extends AbstractFixture implements SharedFixtureInterface, D
             $peg = $this->getReference('peg:' . $shortcode);
 
             $basePath = "/pics/$shortcode";
-            $path     = dirname(dirname(dirname(dirname(dirname(dirname(__DIR__)))))) . "/web$basePath";
+            $path = dirname(dirname(dirname(dirname(dirname(dirname(__DIR__)))))) . "/web$basePath";
             if (!is_dir($path)) {
                 continue;
             }
@@ -58,7 +56,7 @@ class LoadPegEvents extends AbstractFixture implements SharedFixtureInterface, D
             // manual index no
             $fileNo = 0;
             foreach ($finder as $file) {
-                $fileNo++;
+                ++$fileNo;
 
                 $comment = null;
                 if ($shortcode == 'skoop') {
@@ -66,10 +64,10 @@ class LoadPegEvents extends AbstractFixture implements SharedFixtureInterface, D
                 }
 
                 $relativePath = preg_replace('#^.*' . $basePath . '#', $basePath, $file);
-                $pictureEvent = PictureEvent::create($peg, "You know… a picture", $relativePath, 'WeCamp', $comment);
+                $pictureEvent = PictureEvent::create($peg, 'You know… a picture', $relativePath, 'WeCamp', $comment);
 
-                $happenedAtString      = '-' . ($fileCount - $fileNo) . ' hours';
-                $happenedAtDateTime    = new \DateTimeImmutable($happenedAtString);
+                $happenedAtString = '-' . ($fileCount - $fileNo) . ' hours';
+                $happenedAtDateTime = new \DateTimeImmutable($happenedAtString);
                 $happenedAtValueString = $happenedAtDateTime->format(\DateTime::ATOM);
                 $happenedAtReflProp->setValue($pictureEvent, $happenedAtValueString);
 

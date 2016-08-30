@@ -6,12 +6,10 @@ use Peg\Bundles\ApiBundle\Document\CommentEvent;
 
 final class AddComment
 {
-
     /**
      * @var CommentEvent
      */
     private $pegEvent;
-
 
     public function __construct(CommentEvent $pegEvent)
     {
@@ -22,5 +20,4 @@ final class AddComment
     {
         return $this->pegEvent;
     }
-
 }

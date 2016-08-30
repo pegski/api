@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Peg\Util;
 
 use MikeFrancis\Tokenizr\Tokenizr;

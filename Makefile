@@ -22,6 +22,9 @@ run:
 stop:
 	docker-compose down
 
+pre-commit:
+	docker-compose run application vendor/bin/php-cs-fixer fix --verbose --diff --config-file=.php_cs.php
+
 clean:
 	docker-compose rm -f
 	rm -rf var/cache/dev

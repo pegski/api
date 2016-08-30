@@ -6,9 +6,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Peg\Domain\ValueObject\Email;
 
 /**
- * Class User
+ * Class User.
  *
- * @package Peg\Bundles\ApiBundle
  *
  * @MongoDB\Document(repositoryClass="\Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\UserRepository")
  */
@@ -28,7 +27,6 @@ class User
      */
     private $email;
 
-
     /**
      * @return string
      */
@@ -37,7 +35,6 @@ class User
         return $this->id;
     }
 
-
     /**
      * @return Email
      */
@@ -45,7 +42,6 @@ class User
     {
         return $this->email;
     }
-
 
     /**
      * @param Email $email

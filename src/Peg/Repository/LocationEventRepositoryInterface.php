@@ -14,6 +14,5 @@ interface LocationEventRepositoryInterface
      */
     public function findAllForPeg(Peg $peg): array;
 
-
     public function save(LocationEvent $event, $sync = true);
 }

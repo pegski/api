@@ -5,9 +5,8 @@ namespace Peg\Bundles\ApiBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * Class CommentEvent
+ * Class CommentEvent.
  *
- * @package Peg\Bundles\ApiBundle
  *
  * @MongoDB\Document(repositoryClass="Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\CommentEventRepository")
  */
@@ -24,8 +23,7 @@ class CommentEvent extends Event
         string $comment,
         string $location = null,
         string $email = null
-    ) : CommentEvent
-    {
+    ) : CommentEvent {
         return new self($peg, $description, $location, $comment, $email);
     }
 }

@@ -14,6 +14,5 @@ interface CommentEventRepositoryInterface
      */
     public function findAllForPeg(Peg $peg) : array;
 
-
     public function save(CommentEvent $event, $sync = true);
 }

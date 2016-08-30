@@ -6,12 +6,10 @@ use Peg\Bundles\ApiBundle\Document\LocationEvent;
 
 final class UpdateLocation
 {
-
     /**
      * @var LocationEvent
      */
     private $pegEvent;
-
 
     public function __construct(LocationEvent $pegEvent)
     {
@@ -22,5 +20,4 @@ final class UpdateLocation
     {
         return $this->pegEvent;
     }
-
 }

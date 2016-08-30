@@ -3,7 +3,6 @@
 namespace Peg\Domain\Commands;
 
 use Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\LocationEventRepository;
-use Peg\Domain\Exception\PegNotFoundException;
 use Peg\Repository\PegRepositoryInterface;
 
 final class UpdateLocationHandler extends EventHandler
@@ -14,7 +13,7 @@ final class UpdateLocationHandler extends EventHandler
     private $eventRepository;
 
     /**
-     * @param PegRepositoryInterface $pegRepository
+     * @param PegRepositoryInterface  $pegRepository
      * @param LocationEventRepository $eventRepository
      */
     public function __construct(PegRepositoryInterface $pegRepository, LocationEventRepository $eventRepository)

@@ -1,6 +1,6 @@
 <?php
-namespace Peg\Domain\Events;
 
+namespace Peg\Domain\Events;
 
 interface LocationEventInterface
 {

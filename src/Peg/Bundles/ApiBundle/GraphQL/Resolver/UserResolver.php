@@ -13,7 +13,6 @@ class UserResolver
      */
     private $repository;
 
-
     /**
      * PegResolver constructor.
      *
@@ -24,12 +23,10 @@ class UserResolver
         $this->repository = $repository;
     }
 
-
     public function resolveUsers(): array
     {
         return $this->repository->findAll();
     }
-
 
     /**
      * @throws UserWarning if unable to find user with given email
@@ -45,7 +42,6 @@ class UserResolver
 
         return $user;
     }
-
 
     /**
      * @throws UserWarning if unable to find user with given email

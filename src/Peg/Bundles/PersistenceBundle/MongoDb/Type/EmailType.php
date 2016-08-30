@@ -31,11 +31,8 @@ class EmailType extends Type
         return new Email($value);
     }
 
-
     public function closureToPHP()
     {
         return '$return = new \Peg\Domain\ValueObject\Email($value);';
     }
-
-
 }

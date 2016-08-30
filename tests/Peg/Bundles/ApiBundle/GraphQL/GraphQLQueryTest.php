@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Peg\Bundles\ApiBundle\GraphQL;
+namespace tests\Peg\Bundles\ApiBundle\GraphQL;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

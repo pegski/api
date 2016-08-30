@@ -25,17 +25,15 @@ class PegEventResolver
      */
     private $pictureEventRepository;
 
-
     public function __construct(
         CommentEventRepositoryInterface $commentEventRepository,
         LocationEventRepositoryInterface $locationEventRepository,
         PictureEventRepositoryInterface $pictureEventRepository
     ) {
-        $this->commentEventRepository  = $commentEventRepository;
+        $this->commentEventRepository = $commentEventRepository;
         $this->locationEventRepository = $locationEventRepository;
-        $this->pictureEventRepository  = $pictureEventRepository;
+        $this->pictureEventRepository = $pictureEventRepository;
     }
-
 
     /**
      * @param Peg $peg
@@ -44,16 +42,16 @@ class PegEventResolver
      */
     public function resolveEventsByPeg(Peg $peg): array
     {
-        $commentEvents  = $this->commentEventRepository->findAllForPeg($peg);
+        $commentEvents = $this->commentEventRepository->findAllForPeg($peg);
         $locationEvents = $this->locationEventRepository->findAllForPeg($peg);
-        $pictureEvents  = $this->pictureEventRepository->findAllForPeg($peg);
+        $pictureEvents = $this->pictureEventRepository->findAllForPeg($peg);
 
         $events = array_merge($commentEvents, $locationEvents, $pictureEvents);
 
         usort(
             $events,
             function (Event $a, Event $b) {
-                return ($a->getHappenedAt() < $b->getHappenedAt());
+                return $a->getHappenedAt() < $b->getHappenedAt();
             }
         );
 

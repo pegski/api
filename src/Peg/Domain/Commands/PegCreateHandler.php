@@ -11,7 +11,6 @@ class PegCreateHandler
 
     public function __construct(DocumentManager $documentManager)
     {
-
         $this->documentManager = $documentManager;
     }
 

@@ -2,7 +2,6 @@
 
 namespace Peg\Domain\ValueObject;
 
-
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 use Symfony\Component\Validator\Constraints\EmailValidator;

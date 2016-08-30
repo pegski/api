@@ -23,6 +23,5 @@ final class CommentMutation
 
     public function createComment()
     {
-
     }
 }

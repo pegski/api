@@ -11,7 +11,7 @@ use Peg\Bundles\ApiBundle\Document\Peg;
 
 class LoadInitialPegs extends AbstractFixture implements SharedFixtureInterface
 {
-    static public $shortcodes = [
+    public static $shortcodes = [
         'catalyst',
         'flexman',
         'giant',
@@ -24,20 +24,19 @@ class LoadInitialPegs extends AbstractFixture implements SharedFixtureInterface
         'voltra',
     ];
 
-
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
-        $eventReflection    = new \ReflectionClass(Event::class);
+        $eventReflection = new \ReflectionClass(Event::class);
         $happenedAtReflProp = $eventReflection->getProperty('happenedAt');
         $happenedAtReflProp->setAccessible(true);
 
         foreach (self::$shortcodes as $shortcode) {
-            $peg          = Peg::register($shortcode);
+            $peg = Peg::register($shortcode);
             $pegBornEvent = CommentEvent::create($peg, 'PegCreated', 'A Peg has been born! Give it a nice lifetime');
 
             $happenedAtReflProp->setValue($pegBornEvent, (new \DateTimeImmutable('-2 days'))->format(\DateTime::ATOM));

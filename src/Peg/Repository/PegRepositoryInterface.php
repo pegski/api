@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Peg\Repository;
 
 use Peg\Bundles\ApiBundle\Document\Peg;

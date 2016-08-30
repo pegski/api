@@ -5,9 +5,8 @@ namespace Peg\Bundles\ApiBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * Class Peg
+ * Class Peg.
  *
- * @package Peg\Bundles\ApiBundle
  *
  * @MongoDB\Document(repositoryClass="Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PegRepository")
  */

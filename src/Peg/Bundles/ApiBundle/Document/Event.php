@@ -5,9 +5,8 @@ namespace Peg\Bundles\ApiBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * Class Event
+ * Class Event.
  *
- * @package Peg\Bundles\ApiBundle
  *
  * @MongoDB\MappedSuperclass
  */
@@ -62,41 +61,36 @@ abstract class Event
      */
     private $peg;
 
-
     protected function __construct(Peg $peg, string $description, string $location = null, string $comment = null, string $email = null)
     {
-        $this->peg         = $peg;
+        $this->peg = $peg;
         $this->description = htmlspecialchars($description);
-        $this->location    = $location ? htmlspecialchars($location) : null;
-        $this->comment     = $comment ? htmlspecialchars($comment): null;
-        $this->email       = $email ? htmlspecialchars($email) : null;
+        $this->location = $location ? htmlspecialchars($location) : null;
+        $this->comment = $comment ? htmlspecialchars($comment) : null;
+        $this->email = $email ? htmlspecialchars($email) : null;
 
         $this->happenedAt = (new \DateTime())->format(\DateTime::ATOM);
     }
 
-
-    public function getType(){
+    public function getType()
+    {
         return get_called_class();
     }
-
 
     public function getId() : string
     {
         return $this->id;
     }
 
-
     public function getPeg(): Peg
     {
         return $this->peg;
     }
 
-
     public function getDescription() : string
     {
         return $this->description;
     }
-
 
     public function getLocation()
     {
@@ -108,13 +102,10 @@ abstract class Event
         return $this->email;
     }
 
-
-
     public function getComment()
     {
         return $this->comment;
     }
-
 
     /**
      * @return mixed

@@ -6,9 +6,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Peg\Domain\Events\PictureEventInterface;
 
 /**
- * Class PictureEvent
+ * Class PictureEvent.
  *
- * @package Peg\Bundles\ApiBundle
  *
  * @MongoDB\Document(repositoryClass="Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PictureEventRepository")
  */
@@ -28,14 +27,12 @@ class PictureEvent extends Event implements PictureEventInterface
         string $location = null,
         string $comment = null,
         string $email = null
-    ) : PictureEvent
-    {
+    ) : PictureEvent {
         $pictureEvent = new self($peg, $description, $location, $comment, $email);
         $pictureEvent->pictureUrl = $pictureUrl;
 
         return $pictureEvent;
     }
-
 
     public function getPictureUrl() : string
     {

@@ -13,7 +13,6 @@ class PegResolver
      */
     private $repository;
 
-
     /**
      * PegResolver constructor.
      *
@@ -24,12 +23,10 @@ class PegResolver
         $this->repository = $repository;
     }
 
-
     public function resolvePegs(): array
     {
         return $this->repository->findAll();
     }
-
 
     public function resolvePeg(string $shortcode): Peg
     {

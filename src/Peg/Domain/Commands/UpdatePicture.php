@@ -25,9 +25,9 @@ final class UpdatePicture
     private $location;
 
     /**
-     * @param string $shortCode
-     * @param string $description
-     * @param string $picture
+     * @param string      $shortCode
+     * @param string      $description
+     * @param string      $picture
      * @param string|null $location
      */
     public function __construct(string $shortCode, string $description, string $picture, string $location = null)
