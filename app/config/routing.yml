@@ -1,17 +1,18 @@
 fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+  resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+overblog_graphql_graphiql:
+  path: /graphql/web
+  defaults:
+    _controller: OverblogGraphQLBundle:GraphiQL:index
 
 overblog_graphql_endpoint:
   path: /graphql/
   defaults:
-      _controller: OverblogGraphQLBundle:Graph:endpoint
+    _controller: OverblogGraphQLBundle:Graph:endpoint
   options:
-      expose: true
+    expose: true
 
 web:
-    resource: "@PegWebBundle/Resources/config/routing.yml"
-    prefix:   /
-
-api:
-  resource: "@PegApiBundle/Resources/config/routing.yml"
+  resource: "@PegWebBundle/Resources/config/routing.yml"
   prefix:   /

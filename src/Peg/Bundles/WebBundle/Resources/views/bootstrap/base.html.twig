@@ -39,11 +39,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            {% for type, messages in app.session.flashbag.all %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ type }}" role="alert">{{ message }}</div>
-                {% endfor %}
-            {% endfor %}
+            <div class="alert alert-warning peg-not-found">No peg found with this ID! Go to the <a href="{{ path('web_homepage') }}">home page</a> or type a new code!</div>
         </div>
     </div>
 

@@ -18,4 +18,3 @@ PegCommentEvent:
       email:
         type:         "String!"
         description:  "Email of user for gravatar"
-

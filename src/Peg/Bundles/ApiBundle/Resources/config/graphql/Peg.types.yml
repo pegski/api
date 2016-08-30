@@ -1,8 +1,3 @@
-# This implements the following type system shorthand:
-#   interface Peg {
-#     id: String!
-#     shortcode: String
-#   }
 Peg:
   type: object
   config:

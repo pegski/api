@@ -14,6 +14,11 @@
         var response = JSON.parse(this.responseText);
         var timelineContainer = $('ul.timeline');
 
+        if (response.data.peg === null) {
+            $('.peg-not-found').show();
+            return;
+        }
+
         response.data.peg.pegEvents.map(function (pegEvent, index) {
 
             pegEvent.email = pegEvent.email ? decodeHtmlString(pegEvent.email) : null;

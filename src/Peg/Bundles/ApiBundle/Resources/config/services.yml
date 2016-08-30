@@ -1,39 +1,39 @@
 imports:
-    - { resource: "@PegApiBundle/Resources/config/graphql.resolvers.yml" }
-    - { resource: "@PegApiBundle/Resources/config/graphql.mutations.yml" }
+  - { resource: "@PegApiBundle/Resources/config/graphql.resolvers.yml" }
+  - { resource: "@PegApiBundle/Resources/config/graphql.mutations.yml" }
 
 services:
-    peg.api_bundle.repository.doctrine.odm.peg:
-        class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PegRepository
-        factory: ['@doctrine.odm.mongodb.document_manager', getRepository]
-        arguments:
-            - Peg\Bundles\ApiBundle\Document\Peg
+  peg.api_bundle.repository.doctrine.odm.peg:
+    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PegRepository
+    factory: ['@doctrine.odm.mongodb.document_manager', getRepository]
+    arguments:
+      - Peg\Bundles\ApiBundle\Document\Peg
 
-    peg.api_bundle.repository.doctrine.odm.user:
-        class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\UserRepository
-        factory: ['@doctrine.odm.mongodb.document_manager', getRepository]
-        arguments:
-            - Peg\Bundles\ApiBundle\Document\User
+  peg.api_bundle.repository.doctrine.odm.user:
+    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\UserRepository
+    factory: ['@doctrine.odm.mongodb.document_manager', getRepository]
+    arguments:
+      - Peg\Bundles\ApiBundle\Document\User
 
-    peg.util.short_code_generator:
-        class: Peg\Util\ShortCodeGenerator
-        arguments:
-            - '@peg.api_bundle.repository.doctrine.odm.peg'
+  peg.util.short_code_generator:
+    class: Peg\Util\ShortCodeGenerator
+    arguments:
+      - '@peg.api_bundle.repository.doctrine.odm.peg'
 
-    peg.api_bundle.repository.doctrine.odm.location_event:
-        class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\LocationEventRepository
-        factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
-        arguments:
-            - 'Peg\Bundles\ApiBundle\Document\LocationEvent'
+  peg.api_bundle.repository.doctrine.odm.location_event:
+    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\LocationEventRepository
+    factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
+    arguments:
+      - 'Peg\Bundles\ApiBundle\Document\LocationEvent'
 
-    peg.api_bundle.repository.doctrine.odm.comment_event:
-        class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\CommentEventRepository
-        factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
-        arguments:
-            - 'Peg\Bundles\ApiBundle\Document\CommentEvent'
+  peg.api_bundle.repository.doctrine.odm.comment_event:
+    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\CommentEventRepository
+    factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
+    arguments:
+      - 'Peg\Bundles\ApiBundle\Document\CommentEvent'
 
-    peg.api_bundle.repository.doctrine.odm.picture_event:
-        class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PictureEventRepository
-        factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
-        arguments:
-            - 'Peg\Bundles\ApiBundle\Document\PictureEvent'
+  peg.api_bundle.repository.doctrine.odm.picture_event:
+    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PictureEventRepository
+    factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
+    arguments:
+      - 'Peg\Bundles\ApiBundle\Document\PictureEvent'

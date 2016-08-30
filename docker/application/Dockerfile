@@ -23,9 +23,6 @@ RUN docker-php-ext-install mbstring
 RUN apt-get update && apt-get install -y libmcrypt-dev
 RUN docker-php-ext-install mcrypt
 
-# Install PDO
-RUN docker-php-ext-install pdo_mysql
-
 # Install intl
 RUN apt-get update && apt-get install -y libicu-dev
 RUN docker-php-ext-install intl

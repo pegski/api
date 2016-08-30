@@ -9,6 +9,10 @@ body {
     color: #000;
 }
 
+.peg-not-found {
+    display: none;
+}
+
 .pegski-navbar {
     padding-top: 20px;
     background: #003366;
