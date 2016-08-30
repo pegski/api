@@ -1,15 +1,10 @@
-# This project has been moved!!!! 
-
-# It can be found [at github.com/pegski](https://github.com/pegski).
-
-
-## Team Attachable - Project "Peg"
+## Pegski
 
 Aka the PEG Project, in which we will try to maximise the value of the PSA.
 
 ## Pegski
 
-The project has been named [Pegski and is online now](http://peg.ski).
+This project started at WeCamp2016 as the project of "team attachable". We had so much fun with this project that we decided to continue development and moved it to a new github organisation.
 
 ## Requirements
 
