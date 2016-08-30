@@ -1,7 +1,6 @@
 imports:
   - { resource: parameters.yml }
   - { resource: security.yml }
-  - { resource: services.yml }
   - { resource: "@PegApiBundle/Resources/config/services.yml" }
   - { resource: "@PegPersistenceBundle/Resources/config/services.yml" }
 
