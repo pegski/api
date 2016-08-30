@@ -2,17 +2,9 @@
     "name": "pegski/api",
     "license": "MIT",
     "type": "project",
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0",
         "symfony/symfony": "3.1.*",
-        "doctrine/orm": "^2.5",
-        "doctrine/doctrine-bundle": "^1.6",
-        "doctrine/doctrine-cache-bundle": "^1.2",
         "symfony/swiftmailer-bundle": "^2.3",
         "symfony/monolog-bundle": "^2.8",
         "symfony/polyfill-apcu": "^1.0",
@@ -61,6 +53,11 @@
             "app/AppKernel.php",
             "app/AppCache.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "config": {
       "optmize-autoloader": true
