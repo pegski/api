@@ -4,6 +4,7 @@ all: build
 
 build: clean
 	docker-compose build
+	docker-compose up -d
 
 setup: build
 	docker-compose exec application composer install --ignore-platform-reqs
