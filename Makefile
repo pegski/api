@@ -14,7 +14,7 @@ init-new: setup
 	docker-compose exec application bin/console doctrine:mongodb:fixtures:load
 
 setup-production: build
-	docker-compose exec application composer install
+	docker-compose exec application composer install --ignore-platform-reqs
 	docker-compose exec application bin/console doctrine:mongodb:schema:update
 
 run:
