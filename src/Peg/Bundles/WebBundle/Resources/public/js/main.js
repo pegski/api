@@ -1,5 +1,4 @@
 (function () {
-
     'use strict';
 
     // define variables
@@ -29,31 +28,45 @@
         var response = JSON.parse(this.responseText);
         var pegsContainer = $('.pegski-recent-pegs');
 
-        response.data.pegs.map(function(peg){
+        response.data.pegs.map(function (peg) {
             var description = '';
             var image = '/bundles/pegweb/img/kluut.jpg';
-            if (peg.pegEvents.length > 0) {
-                for (var eventI = 0; peg.pegEvents.length-1 >= 0; eventI++) {
-                    if (peg.pegEvents[eventI].pictureUrl !== undefined && peg.pegEvents[eventI].pictureUrl !== null) {
-                        image = peg.pegEvents[eventI].pictureUrl;
-                        break;
-                    }
-                }
-             }
 
-            if(description.length > 15) description = description.substring(0, 15) + ' ...';
+            if (peg.pegEvents.length > 0) {
+                var eventWithImage = peg.pegEvents.find(function (event) {
+                    return event.pictureUrl !== undefined && event.pictureUrl !== null;
+                });
+                if (eventWithImage) {
+                    image = eventWithImage.pictureUrl;
+                }
+            }
+
+            if (description.length > 15) description = description.substring(0, 15) + ' ...';
 
             pegsContainer.append(
                 '<a href="' + Routing.generate('web_timeline', {'shortcode': peg.shortcode}) + '">' +
                 '<div class="col-md-3"><div class="pegski-peg-block" style=""><div class="pegski-peg-image" style="background-image: url(\'' + image + '\');"></div><div class="pegski-peg-description"><i class="icon-noun_33349_cc" aria-hidden="true"></i> ' + description + ' <span class="peg-owner">' +
-                 peg.shortcode +
+                peg.shortcode +
                 '</span></div></div></div></a>'
             );
         });
     }
 
     function fetchPegs() {
-        var fetchPegsQuery = 'query GetAllPegs { pegs { shortcode, pegEvents { description, location, comment, pictureUrl } } }';
+        var fetchPegsQuery = `
+            query GetAllPegs {
+              pegs {
+                shortcode
+                pegEvents {
+                  description
+                  location
+                  comment
+                  pictureUrl
+                }
+              }
+            }
+        `;
+
         window.graphQLFetch(fetchPegsQuery, {}, reqListener);
     }
 
@@ -64,11 +77,11 @@
     window.addEventListener("resize", callbackFunc);
     window.addEventListener("scroll", callbackFunc);
 
-    $('#registerPeg').click(function(event) {
+    $('#registerPeg').click(function (event) {
         event.preventDefault();
 
         var fetchPegsQuery = 'mutation NewPeg { createPeg { shortcode } }';
-        window.graphQLFetch(fetchPegsQuery, {}, function() {
+        window.graphQLFetch(fetchPegsQuery, {}, function () {
             var response = JSON.parse(this.responseText);
             var shortcode = response.data.createPeg.shortcode;
             window.location = Routing.generate('web_timeline', {'shortcode': shortcode});

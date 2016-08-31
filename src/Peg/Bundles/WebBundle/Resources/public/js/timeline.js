@@ -4,7 +4,7 @@
 
     window.latestEventWasInversed = false;
 
-    function decodeHtmlString(htmlString){
+    function decodeHtmlString(htmlString) {
         return escapeHtml(htmlString);
     }
 
@@ -46,7 +46,24 @@
     }
 
     function fetchPeg() {
-        var fetchPegsQuery = 'query MyPeg($pegShortcode: String!) { peg(shortcode: $pegShortcode) { shortcode, pegEvents { pictureUrl, description, location, comment, happenedAt, type, email } } }';
+
+        var fetchPegsQuery = `
+            query MyPeg($pegShortcode: String!) {
+              peg(shortcode: $pegShortcode) {
+                shortcode
+                pegEvents {
+                  pictureUrl
+                  description
+                  location
+                  comment
+                  happenedAt
+                  type
+                  email
+                }
+              }
+            }
+        `;
+
         window.graphQLFetch(fetchPegsQuery, {pegShortcode: window.pegShortcode}, reqListener);
     }
 
@@ -131,7 +148,25 @@
                 $(this).val('');
             });
 
-            var query = "query CreateEvent($pegShortcode: String!, $inputComment: String, $inputPictureUrl: String!, $inputLocation: String, $inputEmail: String) { peg(shortcode: $pegShortcode) { shortcode, createPegPictureEvent (comment: $inputComment, pictureUrl: $inputPictureUrl, location: $inputLocation, email: $inputEmail) { id } } }";
+            var query = `
+                query CreateEvent(
+                  $pegShortcode: String!,
+                  $inputPictureUrl: String!,
+                  $inputComment: String,
+                  $inputLocation: String,
+                  $inputEmail: String) {
+                  peg(shortcode: $pegShortcode) {
+                    shortcode
+                    createPegPictureEvent(
+                      comment: $inputComment,
+                      pictureUrl: $inputPictureUrl,
+                      location: $inputLocation,
+                      email: $inputEmail) {
+                      id
+                    }
+                  }
+                }
+            `;
 
             window.graphQLFetch(query, {
                 pegShortcode: window.pegShortcode,
