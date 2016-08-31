@@ -46,9 +46,9 @@
       args:
        chdir: /home/ubuntu/pegski
 
-    - name: and clear sessions
-      command:  rm -rf sess_* 
-      args:
-       chdir: /home/ubuntu/pegski/var/sessions/prod
+#    - name: and clear sessions
+#      command:  rm -rf sess_*
+#      args:
+#       chdir: /home/ubuntu/pegski/var/sessions/prod
 
 #    - include: docker-cleanup.yml
