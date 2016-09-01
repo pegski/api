@@ -1,0 +1,61 @@
+{% extends 'PegWebBundle::bootstrap/base.html.twig' %}
+
+{% block navbar_navigation %}
+    <li class="active"><a href="{{ path('web_homepage') }}">Recent Pegs</a></li>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5 text-center">
+            <h2>Why and how?</h2>
+            <p>
+                The <a href="{{ path('web_homepage') }}">pegski</a> project started as a "hackaton"
+                like project at <a href="http://weca.mp/2016/" target="_blank">WeCamp 2016</a>,
+                its first version was done in 5 days, from idea, conception, scope, coding,
+                deployment and presentation!
+            </p>
+            <p>
+                It was quite a challenge, and wouldn't be possible if not motivaded by WeCamp organization,
+                coaches and the team itself.
+            </p>
+
+            <h2>The people</h2>
+            <p>
+                <a href="https://twitter.com/mtishauser" target="_blank">Merlijn Tishauser</a>
+            </p>
+            <p>
+                <a href="https://twitter.com/Piwi_91" target="_blank">Pim Widdershoven</a>
+            </p>
+            <p>
+                <a href="https://twitter.com/renatomefi" target="_blank">Renato Mendes Figueiredo</a>
+            </p>
+            <p>
+                <a href="https://twitter.com/RoxanaMCr" target="_blank">Roxana Cristian</a>
+            </p>
+            <p>
+                <a href="https://twitter.com/ToG" target="_blank">Toby G</a>
+            </p>
+            <p>
+                Coach: <a href="https://twitter.com/jelrikvh" target="_blank">Jelrik van Hal</a>
+            </p>
+
+            <h2>What about now?</h2>
+            <p>
+                The project continues with the same people, actually you can join if you want to!
+            </p>
+            <p>
+                It's completely open source and anyone can look and contribute at:
+            </p>
+            <p>
+                <a href="https://github.com/pegski" target="_blank">pegski GitHub organization</a>
+            </p>
+            <p>
+                You can also use our GitHub organization to report any problem with the website:
+                <a href="https://github.com/pegski/frontend/issues" target="_blank">issues page</a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+{% endblock %}

@@ -1,11 +1,17 @@
 web_homepage:
-    path:     /
-    defaults: { _controller: PegWebBundle:Default:index }
-    options:
-        expose: true
+  path:     /
+  defaults: { _controller: PegWebBundle:Default:index }
+  options:
+    expose: true
+
+about_page:
+  path:     /about
+  defaults: { _controller: PegWebBundle:Default:about }
+  options:
+    expose: true
 
 web_timeline:
-    path:     /{shortcode}
-    defaults: { _controller: PegWebBundle:Default:timeline }
-    options:
-        expose: true
+  path:     /{shortcode}
+  defaults: { _controller: PegWebBundle:Default:timeline }
+  options:
+    expose: true
