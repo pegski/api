@@ -21,23 +21,29 @@
 
         response.data.peg.pegEvents.map(function (pegEvent, index) {
 
-            pegEvent.email = pegEvent.email ? decodeHtmlString(pegEvent.email) : null;
             pegEvent.pictureUrl = pegEvent.pictureUrl ? decodeHtmlString(pegEvent.pictureUrl) : null;
             pegEvent.location = pegEvent.location ? decodeHtmlString(pegEvent.location) : null;
             pegEvent.comment = pegEvent.comment ? decodeHtmlString(pegEvent.comment) : null;
 
             var inversion = index % 2 == 0 ? "timeline-inverted" : "timeline";
-            var avatar = pegEvent.email !== null ? 'https://www.gravatar.com/avatar/' + md5(pegEvent.email) + '.jpg?s=200' : '/bundles/pegweb/img/peg_logo.png';
+            var avatar = pegEvent.avatarUrl !== null ? pegEvent.avatarUrl + '?s=200' : '/bundles/pegweb/img/peg_logo.png';
             var image = pegEvent.pictureUrl !== null ? '<img class="img-responsive" src="' + pegEvent.pictureUrl + '"/>' : '';
             var timeSinceEvent = pegEvent.happenedAt !== null ? getTimeSinceDateString(pegEvent.happenedAt) + ' ago' : '';
             var locationString = pegEvent.location !== null ? ' in <i class="fa fa-location-arrow"></i> ' + pegEvent.location : '';
             var comment = pegEvent.comment !== null ? pegEvent.comment : '';
             var badge = getIconClassForPegEvent(pegEvent);
 
+            var avatarHtml = '<img src="' + avatar + '" class="img-responsive img-circle" />';
+            if (pegEvent.profileUrl) {
+                avatarHtml = '<a href="' + pegEvent.profileUrl + '" target="_blank">' +
+                        avatarHtml +
+                    '</a>';
+            }
+
             window.latestEventWasInversed = index % 2 == 0;
 
             timelineContainer.append('<li class="' + inversion + '">' +
-                '<div class="timeline-avatar"><img src="' + avatar + '" class="img-responsive img-circle"></div>' +
+                '<div class="timeline-avatar">' + avatarHtml + '</div>' +
                 '<div class="timeline-badge"><i class="glyphicon glyphicon-' + badge + '"></i></div>' +
                 '<div class="timeline-panel">' +
                 '<div class="timeline-heading"><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + timeSinceEvent + locationString + '</small></p>' +
@@ -58,7 +64,8 @@
                   comment
                   happenedAt
                   type
-                  email
+                  avatarUrl
+                  profileUrl
                 }
               }
             }
@@ -125,7 +132,7 @@
             '<div class="timeline-panel">' +
             '<div class="timeline-heading"><p>Add a new event to the peg</p></div>' +
             '<div class="timeline-body"><form>' +
-            '<p><input type="email" name="email" placeholder="Optional email"></p>' +
+            '<p><input type="email" name="email" placeholder="Optional email (Not exposed)"></p>' +
             '<p><input type="text" name="location" placeholder="Location"></p>' +
             '<p><input type="url" name="picture" placeholder="Picture URL"></p>' +
             '<p><input type="text" name="comment" placeholder="Comment"></p>' +

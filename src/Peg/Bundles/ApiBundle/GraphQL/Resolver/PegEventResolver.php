@@ -2,6 +2,7 @@
 
 namespace Peg\Bundles\ApiBundle\GraphQL\Resolver;
 
+use forxer\Gravatar\Gravatar;
 use Peg\Bundles\ApiBundle\Document\Event;
 use Peg\Bundles\ApiBundle\Document\Peg;
 use Peg\Repository\CommentEventRepositoryInterface;
@@ -56,5 +57,23 @@ class PegEventResolver
         );
 
         return $events;
+    }
+
+    public function resolveFieldAvatarUrl(Event $event)
+    {
+        if (!$event->getEmail()) {
+            return null;
+        }
+
+        return Gravatar::image($event->getEmail());
+    }
+
+    public function resolveFieldProfileUrl(Event $event)
+    {
+        if (!$event->getEmail()) {
+            return null;
+        }
+
+        return Gravatar::profile($event->getEmail());
     }
 }

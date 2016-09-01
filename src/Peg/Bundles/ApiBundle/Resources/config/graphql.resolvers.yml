@@ -24,6 +24,8 @@ services:
       - "@peg.api_bundle.repository.doctrine.odm.picture_event"
     tags:
       - { name: overblog_graphql.resolver, alias: "peg_events", method: "resolveEventsByPeg" }
+      - { name: overblog_graphql.resolver, alias: "event_user_gravatar", method: "resolveFieldAvatarUrl" }
+      - { name: overblog_graphql.resolver, alias: "event_user_profile", method: "resolveFieldProfileUrl" }
 
   peg.api.resolver.comment:
     class: Peg\Bundles\ApiBundle\GraphQL\Resolver\CommentResolver

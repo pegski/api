@@ -24,6 +24,11 @@ PegEvent:
       happenedAt:
         type:         "String"
         description:  "When it happened, rights?"
-      email:
-        type:         "String"
-        description:  "Email of user for gravatar"
+      avatarUrl:
+        type: "String"
+        description: "The avatar URL for whom posted the event"
+        resolve: "@=resolver('event_user_gravatar', [value])"
+      profileUrl:
+        type: "String"
+        description: "The avatar URL for whom posted the event"
+        resolve: "@=resolver('event_user_profile', [value])"
