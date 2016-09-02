@@ -19,8 +19,29 @@ EC2 instance should be created manually, currently ubuntu14.04 LTS is used as ba
  ansible-playbook -i hosts site.yml --tags "ssh_access"
  ```
  
+
+ 
+ # deploy
+ first, backup mongodb:
+ ```
+  sudo -s
+  docker ps # check name of running mongodb container
+  docker exec -it pegski_mongodb_1 bash
+  cd /data/db
+  rm -rf ./backup/*
+  mongodump --host localhost:27017 --out ./backup/
+  exit
+  #now move the backup container to a safe place
+  cd ~
+  mv backup-mongo backup-mongo-<date>
+  mv /home/ubuntu/pegski/docker/mongodb/data/backup backup-mongo
+ ```
  
  After this, webski can be deployed from github by using:
  ```
- ansible-playbook -i hosts site.yml deploy/pegski.yml
+ ansible-playbook -i hosts deploy/pegski.yml
  ```
+ 
+ and for now, fix sessions afterwards:
+ 
+ 
