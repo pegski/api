@@ -1,29 +1,29 @@
 PegEvent:
   type: object
   config:
-    description:  "You know… a peg do stuff"
+    description: "You know… a peg do stuff"
     fields:
       id:
-        type:         "String!"
-        description:  "The ID of this event"
+        type: "String!"
+        description: "The ID of this event"
       type:
-        type:         "String"
-        description:  "Event type"
+        type: "PegEventType!"
+        description: "Event type"
       description:
-        type:         "String"
-        description:  "What is this event"
+        type: "String"
+        description: "What is this event"
       location:
-        type:         "String"
-        description:  "and what was the location"
+        type: "String"
+        description: "and what was the location"
       comment:
-        type:         "String"
-        description:  "you know...stuff you said"
+        type: "String"
+        description: "you know...stuff you said"
       pictureUrl:
-        type:         "String"
-        description:  "where the image is… Duh!"
+        type: "String"
+        description: "where the image is… Duh!"
       happenedAt:
-        type:         "String"
-        description:  "When it happened, rights?"
+        type: "String!"
+        description: "When it happened, rights?"
       avatarUrl:
         type: "String"
         description: "The avatar URL for whom posted the event"
@@ -32,3 +32,12 @@ PegEvent:
         type: "String"
         description: "The avatar URL for whom posted the event"
         resolve: "@=resolver('event_user_profile', [value])"
+
+PegEventType:
+  type: enum
+  config:
+    values:
+      TYPE_PICTURE:
+        value: "PegEventPicture"
+      TYPE_COMMENT:
+        value: "PegEventComment"

@@ -15,13 +15,13 @@ services:
     arguments:
       - Peg\Bundles\ApiBundle\Document\User
 
-  peg.util.short_code_generator:
-    class: Peg\Util\ShortCodeGenerator
-    arguments:
-      - '@peg.api_bundle.repository.doctrine.odm.peg'
-
   peg.api_bundle.repository.doctrine.odm.peg_event:
     class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PegEventRepository
     factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
     arguments:
       - 'Peg\Bundles\ApiBundle\Document\Event'
+
+  peg.util.short_code_generator:
+    class: Peg\Util\ShortCodeGenerator
+    arguments:
+      - '@peg.api_bundle.repository.doctrine.odm.peg'

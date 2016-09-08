@@ -6,7 +6,6 @@ services:
     tags:
       - { name: tactician.handler, command: Peg\Domain\Commands\PegCreate }
 
-
   peg.persistence.command.add_comment.handler:
     class: Peg\Domain\Commands\AddPegEventHandler
     arguments:
@@ -14,5 +13,3 @@ services:
       - "@peg.api_bundle.repository.doctrine.odm.peg_event"
     tags:
       - { name: tactician.handler, command: Peg\Domain\Commands\AddPegEvent }
-
-
