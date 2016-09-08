@@ -3,7 +3,6 @@
 namespace Peg\Domain\Commands;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Peg\Bundles\ApiBundle\Document\Peg;
 
 class PegCreateHandler
 {

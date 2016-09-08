@@ -5,13 +5,14 @@ namespace Peg\Bundles\ApiBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * Class Event.
- *
- *
- * @MongoDB\MappedSuperclass
+ * @MongoDB\Document(repositoryClass="Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PegEventRepository")
  */
-abstract class Event
+final class Event
 {
+    const TYPE_PICTURE = 'PegEventPicture';
+    const TYPE_COMMENT = 'PegEventComment';
+    const TYPE_LOCATION = 'PegEventLocation';
+
     /**
      * @var string
      *
@@ -61,7 +62,21 @@ abstract class Event
      */
     private $peg;
 
-    protected function __construct(Peg $peg, string $description, string $location = null, string $comment = null, string $email = null)
+    /**
+     * @var string
+     *
+     * @MongoDB\Field(type="string")
+     */
+    private $pictureUrl;
+
+    /**
+     * @var string
+     *
+     * @MongoDB\Field(type="string")
+     */
+    private $type;
+
+    private function __construct(Peg $peg, string $description, string $location = null, string $comment = null, string $email = null)
     {
         $this->peg = $peg;
         $this->description = htmlspecialchars($description);
@@ -72,12 +87,35 @@ abstract class Event
         $this->happenedAt = (new \DateTime())->format(\DateTime::ATOM);
     }
 
-    public function getType()
-    {
-        return get_called_class();
+    public static function createPictureEvent(
+        Peg $peg,
+        string $description,
+        string $pictureUrl,
+        string $location = null,
+        string $comment = null,
+        string $email = null
+    ) : Event {
+        $event = new self($peg, $description, $location, $comment, $email);
+        $event->pictureUrl = $pictureUrl;
+        $event->type = self::TYPE_PICTURE;
+
+        return $event;
     }
 
-    public function getId() : string
+    public static function createCommentEvent(
+        Peg $peg,
+        string $description,
+        string $location = null,
+        string $comment = null,
+        string $email = null
+    ) : Event {
+        $event = new self($peg, $description, $location, $comment, $email);
+        $event->type = self::TYPE_COMMENT;
+
+        return $event;
+    }
+
+    public function getId(): string
     {
         return $this->id;
     }
@@ -87,7 +125,7 @@ abstract class Event
         return $this->peg;
     }
 
-    public function getDescription() : string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -107,11 +145,18 @@ abstract class Event
         return $this->comment;
     }
 
-    /**
-     * @return mixed
-     */
     public function getHappenedAt()
     {
         return $this->happenedAt;
+    }
+
+    public function getPictureUrl()
+    {
+        return $this->pictureUrl;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 }

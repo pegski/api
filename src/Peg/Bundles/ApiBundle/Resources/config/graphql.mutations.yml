@@ -12,9 +12,8 @@ services:
     arguments:
       - "@tactician.commandbus"
     tags:
-      - { name: overblog_graphql.mutation, alias: "peg_location_event_mutation_create", method: "createPegLocationEvent" }
       - { name: overblog_graphql.mutation, alias: "peg_comment_event_mutation_create", method: "createPegCommentEvent" }
-      - { name: overblog_graphql.mutation, alias: "peg_picture_event_mutation_create", method: "createPegPhotoEvent" }
+      - { name: overblog_graphql.mutation, alias: "peg_picture_event_mutation_create", method: "createPegPictureEvent" }
 
   peg.api.mutation.comment:
     class: Peg\Bundles\ApiBundle\GraphQL\Mutation\CommentMutation

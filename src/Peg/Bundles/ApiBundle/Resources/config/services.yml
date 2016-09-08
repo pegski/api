@@ -20,20 +20,8 @@ services:
     arguments:
       - '@peg.api_bundle.repository.doctrine.odm.peg'
 
-  peg.api_bundle.repository.doctrine.odm.location_event:
-    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\LocationEventRepository
+  peg.api_bundle.repository.doctrine.odm.peg_event:
+    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PegEventRepository
     factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
     arguments:
-      - 'Peg\Bundles\ApiBundle\Document\LocationEvent'
-
-  peg.api_bundle.repository.doctrine.odm.comment_event:
-    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\CommentEventRepository
-    factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
-    arguments:
-      - 'Peg\Bundles\ApiBundle\Document\CommentEvent'
-
-  peg.api_bundle.repository.doctrine.odm.picture_event:
-    class: Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PictureEventRepository
-    factory: ["@doctrine.odm.mongodb.document_manager", "getRepository"]
-    arguments:
-      - 'Peg\Bundles\ApiBundle\Document\PictureEvent'
+      - 'Peg\Bundles\ApiBundle\Document\Event'

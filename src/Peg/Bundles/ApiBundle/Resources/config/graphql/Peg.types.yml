@@ -14,16 +14,6 @@ Peg:
         type: "[PegEvent]"
         description: "Ohhh.. what happened to me?!"
         resolve: "@=resolver('peg_events', [value])"
-      createPegLocationEvent:
-        type: "PegEvent"
-        args:
-          comment:
-            type: "String"
-          location:
-            type: "String!"
-          email:
-            type: "String"
-        resolve: "@=mutation('peg_location_event_mutation_create', [value, args['location'], args['comment'], args['email']])"
       createPegCommentEvent:
         type: "PegEvent"
         args:

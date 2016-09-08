@@ -19,9 +19,7 @@ services:
   peg.api.resolver.peg_event:
     class: Peg\Bundles\ApiBundle\GraphQL\Resolver\PegEventResolver
     arguments:
-      - "@peg.api_bundle.repository.doctrine.odm.comment_event"
-      - "@peg.api_bundle.repository.doctrine.odm.location_event"
-      - "@peg.api_bundle.repository.doctrine.odm.picture_event"
+      - "@peg.api_bundle.repository.doctrine.odm.peg_event"
     tags:
       - { name: overblog_graphql.resolver, alias: "peg_events", method: "resolveEventsByPeg" }
       - { name: overblog_graphql.resolver, alias: "event_user_gravatar", method: "resolveFieldAvatarUrl" }

@@ -5,7 +5,6 @@ namespace Peg\Bundles\ApiBundle\DataFixtures\MongoDB;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\SharedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Peg\Bundles\ApiBundle\Document\CommentEvent;
 use Peg\Bundles\ApiBundle\Document\Event;
 use Peg\Bundles\ApiBundle\Document\Peg;
 

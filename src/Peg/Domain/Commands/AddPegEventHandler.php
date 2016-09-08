@@ -2,30 +2,30 @@
 
 namespace Peg\Domain\Commands;
 
-use Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\CommentEventRepository;
+use Peg\Bundles\ApiBundle\Repository\Doctrine\ODM\PegEventRepository;
 use Peg\Repository\PegRepositoryInterface;
 
-final class AddCommentHandler extends EventHandler
+final class AddPegEventHandler extends EventHandler
 {
     /**
-     * @var CommentEventRepository
+     * @var PegEventRepository
      */
     private $commentEventRepository;
 
     /**
      * @param PegRepositoryInterface $pegRepository
-     * @param CommentEventRepository $commentEventRepository
+     * @param PegEventRepository $commentEventRepository
      */
-    public function __construct(PegRepositoryInterface $pegRepository, CommentEventRepository $commentEventRepository)
+    public function __construct(PegRepositoryInterface $pegRepository, PegEventRepository $commentEventRepository)
     {
         parent::__construct($pegRepository);
         $this->commentEventRepository = $commentEventRepository;
     }
 
     /**
-     * @param AddComment $command
+     * @param AddPegEvent $command
      */
-    public function handle(AddComment $command)
+    public function handle(AddPegEvent $command)
     {
         $event = $command->getPegEvent();
         $this->commentEventRepository->save($event);

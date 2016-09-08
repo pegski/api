@@ -6,26 +6,13 @@ services:
     tags:
       - { name: tactician.handler, command: Peg\Domain\Commands\PegCreate }
 
-  peg.persistence.command.update_location.handler:
-    class: Peg\Domain\Commands\UpdateLocationHandler
-    arguments:
-      - "@peg.api_bundle.repository.doctrine.odm.peg"
-      - "@peg.api_bundle.repository.doctrine.odm.location_event"
-    tags:
-      - { name: tactician.handler, command: Peg\Domain\Commands\UpdateLocation }
 
   peg.persistence.command.add_comment.handler:
-    class: Peg\Domain\Commands\AddCommentHandler
+    class: Peg\Domain\Commands\AddPegEventHandler
     arguments:
       - "@peg.api_bundle.repository.doctrine.odm.peg"
-      - "@peg.api_bundle.repository.doctrine.odm.comment_event"
+      - "@peg.api_bundle.repository.doctrine.odm.peg_event"
     tags:
-      - { name: tactician.handler, command: Peg\Domain\Commands\AddComment }
+      - { name: tactician.handler, command: Peg\Domain\Commands\AddPegEvent }
 
-  peg.persistence.command.add_picture.handler:
-    class: Peg\Domain\Commands\AddPictureHandler
-    arguments:
-      - "@peg.api_bundle.repository.doctrine.odm.peg"
-      - "@peg.api_bundle.repository.doctrine.odm.picture_event"
-    tags:
-      - { name: tactician.handler, command: Peg\Domain\Commands\AddPicture }
+
