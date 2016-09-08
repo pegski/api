@@ -16,7 +16,11 @@ final class PegEventRepository extends DocumentRepository implements PegEventRep
      */
     public function findAllForPeg(Peg $peg): array
     {
-        return $this->findBy(['peg' => $peg]);
+        $query = $this->createQueryBuilder()
+                ->field('peg')->equals($peg)
+                ->sort('happenedAt', -1);
+
+        return $query->getQuery()->execute()->toArray();
     }
 
     public function save(Event $event, $sync = true)
