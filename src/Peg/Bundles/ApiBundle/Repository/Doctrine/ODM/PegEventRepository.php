@@ -9,16 +9,15 @@ use Peg\Repository\PegEventRepositoryInterface;
 
 final class PegEventRepository extends DocumentRepository implements PegEventRepositoryInterface
 {
-    /**
-     * @param Peg $peg
-     *
-     * @return Event[]
-     */
-    public function findAllForPeg(Peg $peg): array
+    public function findAllForPeg(Peg $peg, int $order, $type = null): array
     {
         $query = $this->createQueryBuilder()
                 ->field('peg')->equals($peg)
-                ->sort('happenedAt', -1);
+                ->sort('happenedAt', $order);
+
+        if ($type) {
+            $query->field('type')->equals($type);
+        }
 
         return $query->getQuery()->execute()->toArray();
     }

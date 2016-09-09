@@ -14,7 +14,7 @@ final class AddPegEventHandler extends EventHandler
 
     /**
      * @param PegRepositoryInterface $pegRepository
-     * @param PegEventRepository $commentEventRepository
+     * @param PegEventRepository     $commentEventRepository
      */
     public function __construct(PegRepositoryInterface $pegRepository, PegEventRepository $commentEventRepository)
     {

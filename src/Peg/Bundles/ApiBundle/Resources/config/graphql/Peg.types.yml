@@ -12,7 +12,13 @@ Peg:
       pegEvents:
         type: "[PegEvent]"
         description: "Ohhh.. what happened to me?!"
-        resolve: "@=resolver('peg_events', [value])"
+        resolve: "@=resolver('peg_events', [value, args])"
+        args:
+          type:
+            type: "PegEventType"
+          order:
+            type: "QueryOrder"
+            description: "Default is ASC"
       createPegCommentEvent:
         type: "PegEvent"
         args:

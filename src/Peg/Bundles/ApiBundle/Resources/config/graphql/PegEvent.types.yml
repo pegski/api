@@ -41,3 +41,5 @@ PegEventType:
         value: "PegEventPicture"
       TYPE_COMMENT:
         value: "PegEventComment"
+      TYPE_LOCATION:
+        value: "PegEventLocation"

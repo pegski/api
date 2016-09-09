@@ -3,6 +3,7 @@
 namespace Peg\Bundles\ApiBundle\GraphQL\Resolver;
 
 use forxer\Gravatar\Gravatar;
+use Overblog\GraphQLBundle\Definition\Argument;
 use Peg\Bundles\ApiBundle\Document\Event;
 use Peg\Bundles\ApiBundle\Document\Peg;
 use Peg\Repository\PegEventRepositoryInterface;
@@ -20,13 +21,14 @@ class PegEventResolver
     }
 
     /**
-     * @param Peg $peg
+     * @param Peg      $peg
+     * @param Argument $args
      *
      * @return Event[]
      */
-    public function resolveEventsByPeg(Peg $peg): array
+    public function resolveEventsByPeg(Peg $peg, Argument $args): array
     {
-        return $this->pegEventRepository->findAllForPeg($peg);
+        return $this->pegEventRepository->findAllForPeg($peg, $args['order'] ?? -1, $args['type']);
     }
 
     public function resolveFieldAvatarUrl(Event $event)

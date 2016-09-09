@@ -21,3 +21,12 @@ Query:
           email:
             type: "String!"
         resolve: "@=resolver('user', [args['email']])"
+
+QueryOrder:
+  type: enum
+  config:
+    values:
+      ASC:
+        value: 1
+      DESC:
+        value: -1
