@@ -57,7 +57,7 @@
             query GetAllPegs {
               pegs {
                 shortcode
-                pegEvents {
+                pegEvents(type: TYPE_PICTURE, order: DESC) {
                   description
                   location
                   comment

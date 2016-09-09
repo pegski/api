@@ -57,7 +57,7 @@
             query MyPeg($pegShortcode: String!) {
               peg(shortcode: $pegShortcode) {
                 shortcode
-                pegEvents {
+                pegEvents(order: DESC) {
                   pictureUrl
                   description
                   location
